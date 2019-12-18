@@ -1,0 +1,30 @@
+import requests
+link = "http://www.python.requests.org"
+r = requests.get(link)
+
+dir(r)
+print(type(r))
+
+r.url # URL of response object
+r.status_code  # status code
+r.history # status code of history event
+r.headers # response headers with info about server, date, etc
+r.headers['Content-Type'] # Specific header info grab
+r.request.headers # requests headers
+
+r.content[0:400] # 400 bytes of characters
+r.text[0:400] # sub string that is 400 string characters from the response
+r = requests.get(link, stream=True) # raw response
+print(type(r.raw)) # type of raw response that we obtained
+r.raw.read(100) # read first 100 characters
+
+
+
+link = "https://feeds.citibikenyc.com/stations/stations.json
+response = requests.get(link).json()
+
+for i in range(10): # read 10 stationName form JSON reponse.
+	print('Station: ', response['stationBeanList'][i]['stationName'])
+##########################
+
+r.requests.get('https://api.github.com/user', auth=('email',

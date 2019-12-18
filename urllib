@@ -1,0 +1,55 @@
+#urllib
+
+import urllib.request
+dir(urllib.request) # list features available for urllib.request
+
+link = 'https://www.google.com'
+linkRequest = urllib.request.urlopen(link) # open link)
+print(type(linkRequest)) # object type
+linkResponse = urllib.request.urlopen(link).read() # openlink and read content
+print(type(linkResponse))
+linkRequest.getcode() # can also use it as linkRequest.code or linkRequest.status
+linkRequest.geturl() # can also use linkRequest.url
+linkRequest.getheaders()
+linkRequest.getheader("Content-Type")
+linkRequest.info()["Content-Type"]
+
+###############
+import urllib.request as request
+import urllib.error as error
+try: # attemp an error case
+	request.urlopen("https://www.python.ogr") # Wrong url passed to urlopen()
+
+except error.URLError as :
+	print("Error Occured: ", e.reason)
+
+################
+import urllib.parse as urlparse
+print(dir(urlparse)) # list features from urllib.parse
+
+amazonUrl = 'https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias$3Dstripbooks.intl-ship&field-keywords=Pearson+Books'
+print(urlparse.urlsplit(amazonUrl)) # split amazonUrl
+print(urlparse.urlsplit(amazonUrl).scheme)
+
+data = {'param1':'value1', 'param2':'value2'}
+urlpaprse.urlencode(data)
+urlparse.parse_qs(urlparse.urlencode(data))
+urlparse.urlencode(data).encode('utf-8')
+
+urlparse.urljoin('http://localhost:8080/~cache/','data file') # create url
+###############33
+
+import urllib.robotparser as robot
+par = robot.RobotFileParser()
+par.set_url('https://www.samsclub.com/robots.txt')
+par.read() # read the URL Content
+print(par)
+
+
+
+
+
+
+
+
+
